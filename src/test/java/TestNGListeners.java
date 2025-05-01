@@ -37,12 +37,22 @@ public class TestNGListeners implements ITestListener {
 
     public void onStart(ITestContext context) {
         logger.info("This is a start method");
-        WebDriverManager.getWebDriverManager().createDriver(FileReaderManager.getFileReaderManager().getPropertyFileReader().getProperty("browser"));
+
+        WebDriverManager.getWebDriverManager().createDriver(
+                FileReaderManager.getFileReaderManager().getPropertyFileReader().getProperty("browser")
+        );
+
         ExtentSparkReporter spark = new ExtentSparkReporter(extentReportDirectory);
+
+        // Load XML configuration file
+        spark.loadXMLConfig(System.getProperty("user.dir") + File.separator + "src"
+                + File.separator + "test" + File.separator + "resources"
+                + File.separator + "extent-config.xml");
+
         report = new ExtentReports();
         report.attachReporter(spark);
-
     }
+
 
     public void onTestStart(ITestResult result) {
         logger.info("This is a Test start method");

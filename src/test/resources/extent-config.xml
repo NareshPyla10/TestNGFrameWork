@@ -1,0 +1,10 @@
+<extentreports>
+    <configuration>
+        <theme>dark</theme>
+        <encoding>utf-8</encoding>
+        <protocol>HTTPS</protocol>
+        <documentTitle>TestNG Automation Report</documentTitle>
+        <reportName>Automation Report</reportName>
+        <timelineEnabled>true</timelineEnabled>
+    </configuration>
+</extentreports>
