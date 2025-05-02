@@ -24,27 +24,27 @@ public class Cart {
     }
 
 
-//    @Test
-//    //verifying and clicking and placing an order with click closing button
-//    public void placingOrderWithCloseButton(){
-//        pageObjectManager.getHomePage().launchWebsite(propertyFileReader.getProperty("url"));
-//        pageObjectManager.getCartPage().verifyingCartButton();
-//        pageObjectManager.getCartPage().clickPlaceOrderButton();
-//        customer = jsonFileReader.getCustomerByName("Lakshay");
-//        pageObjectManager.getCartPage().placingOrder(customer.name, customer.country, customer.city, customer.creditCard, customer.month, customer.year);
-//        pageObjectManager.getCartPage().clickCartCloseButton();
-//    }
-//
-//    @Test
-//    //verifying and clicking and placing an order with click purchase button
-//    public void placingOrderWithClickPurchaseButton(){
-//        pageObjectManager.getHomePage().launchWebsite(propertyFileReader.getProperty("url"));
-//        pageObjectManager.getCartPage().verifyingCartButton();
-//        pageObjectManager.getCartPage().clickPlaceOrderButton();
-//        customer = jsonFileReader.getCustomerByName("Lakshay");
-//        pageObjectManager.getCartPage().placingOrder(customer.name, customer.country, customer.city, customer.creditCard, customer.month, customer.year);
-//        pageObjectManager.getCartPage().clickPurchaseButton();
-//    }
+    @Test
+    //verifying and clicking and placing an order with click closing button
+    public void placingOrderWithCloseButton(){
+        pageObjectManager.getHomePage().launchWebsite(propertyFileReader.getProperty("url"));
+        pageObjectManager.getCartPage().verifyingCartButton();
+        pageObjectManager.getCartPage().clickPlaceOrderButton();
+        customer = jsonFileReader.getCustomerByName("Lakshay");
+        pageObjectManager.getCartPage().placingOrder(customer.name, customer.country, customer.city, customer.creditCard, customer.month, customer.year);
+        pageObjectManager.getCartPage().clickCartCloseButton();
+    }
+
+    @Test
+    //verifying and clicking and placing an order with click purchase button
+    public void placingOrderWithClickPurchaseButton(){
+        pageObjectManager.getHomePage().launchWebsite(propertyFileReader.getProperty("url"));
+        pageObjectManager.getCartPage().verifyingCartButton();
+        pageObjectManager.getCartPage().clickPlaceOrderButton();
+        customer = jsonFileReader.getCustomerByName("Lakshay");
+        pageObjectManager.getCartPage().placingOrder(customer.name, customer.country, customer.city, customer.creditCard, customer.month, customer.year);
+        pageObjectManager.getCartPage().clickPurchaseButton();
+    }
 
     @Test
     //adding product to the cart and click purchase button
