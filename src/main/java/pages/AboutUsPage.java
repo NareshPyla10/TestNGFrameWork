@@ -42,6 +42,8 @@ public class AboutUsPage extends BasePage{
 
 
     public void closingButton(){
+        aboutUsPageWait.until(ExpectedConditions.visibilityOf(closeButton)).isDisplayed();
+        getWebWaitCommands().waitFor(3000);
         getWebClickCommands().clickElement(closeButton);
     }
 

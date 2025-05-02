@@ -40,6 +40,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[text()='About us']")
     private WebElement aboutButton;
 
+
     @FindBy(linkText = "MacBook air")
     private WebElement macBookAirButton;
 
@@ -87,6 +88,7 @@ public class HomePage extends BasePage{
 
 
     public void clickAboutUsButton(){
+        homePageWait.until(ExpectedConditions.visibilityOf(aboutButton)).isDisplayed();
         getWebClickCommands().clickElement(aboutButton);
     }
 
@@ -147,18 +149,18 @@ public class HomePage extends BasePage{
 //    }
 
     public void clickingRequiredProduct(String productName){
-        for (WebElement product : productNamesList){
-            if(product.getText().equalsIgnoreCase(productName)){
+        for (WebElement product : productNamesList) {
+            logger.info("Checking product: " + product.getText());
+            if (product.getText().equalsIgnoreCase(productName)) {
                 logger.info("Found product: " + productName);
                 homePageWait.until(ExpectedConditions.visibilityOf(product)).isDisplayed();
-                getWebWaitCommands().waitFor(2000);
+                getWebWaitCommands().waitFor(9000);
                 product.click();
                 logger.info("Clicked on product: " + productName);
                 break;
-            }else {
-                logger.info("Skipping product: " + product.getText());
             }
         }
+
     }
 
     public void clickContactButton(){
