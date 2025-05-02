@@ -52,6 +52,9 @@ public class SignUpPage extends BasePage{
     @FindBy(id = "#login2")
     WebElement logInButton;
 
+    @FindBy(xpath = "//button[text()='Log in']")
+    WebElement logInPopUpButton;
+
 
 
 
@@ -65,11 +68,14 @@ public class SignUpPage extends BasePage{
         getWebClickCommands().clickElement(signInButton);
     }
 
+    public void clickLogInPopUpButton(){
+        getWebClickCommands().clickElement(logInPopUpButton);
+    }
 
     public void signUp(String name, String password) {
-        getWebWaitCommands().waitFor(1000);
+        signInPageLoad.until(ExpectedConditions.visibilityOf(userNameButton)).isDisplayed();
         getWebTextCommands().clearAndEnterText(userNameButton, name);
-        getWebWaitCommands().waitFor(1000);
+        signInPageLoad.until(ExpectedConditions.visibilityOf(userPassword)).isDisplayed();
         getWebTextCommands().clearAndEnterText(userPassword, password);
         clickingSignUpButton();
     }
@@ -83,7 +89,6 @@ public class SignUpPage extends BasePage{
         signInPageLoad.until(ExpectedConditions.alertIsPresent());
         if(getWebAlertCommands().getTextFromAlert().contains("This user already exist")){
             getWebAlertCommands().acceptSimpleAlert();
-
         }
     }
 
@@ -99,4 +104,8 @@ public class SignUpPage extends BasePage{
         getWebClickCommands().clickElement(closeButton);
     }
 
+
+    public boolean verifyWelcomeButton(){
+        return signInPageLoad.until(ExpectedConditions.visibilityOf(welcomeButton)).isDisplayed();
+    }
 }
