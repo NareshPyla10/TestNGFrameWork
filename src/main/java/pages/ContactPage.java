@@ -58,5 +58,7 @@ public class ContactPage extends BasePage{
 
     public void sendMessage(){
         getWebClickCommands().clickElement(sendMessageButton);
+        getWebWaitCommands().waitFor(5000);
+        getWebAlertCommands().acceptSimpleAlert();
     }
 }
