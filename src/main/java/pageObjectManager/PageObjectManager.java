@@ -10,6 +10,7 @@ public class PageObjectManager {
     private AboutUsPage aboutUsPage;
     private SignUpPage signUpPage;
     private CartPage cartPage;
+    private ContactPage contactPage;
 
     public PageObjectManager(WebDriver driver){
         this.driver = driver;
@@ -21,6 +22,10 @@ public class PageObjectManager {
 
     public LogInPage getLogInPage(){
         return (logInPage==null) ? logInPage= new LogInPage(driver) : logInPage;
+    }
+
+    public ContactPage getContactPage(){
+        return (contactPage==null) ? contactPage= new ContactPage(driver) : contactPage;
     }
 
     public AboutUsPage getAboutUsPage(){

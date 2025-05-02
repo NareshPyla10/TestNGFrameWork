@@ -22,6 +22,9 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[text()='Home ']")
     private WebElement homeButton;
 
+    @FindBy(xpath = "//a[text()='Contact']")
+    private WebElement contactButton;
+
     @FindBy(xpath = "//a[text()='Laptops']")
     private WebElement laptopsButtons;
 
@@ -156,5 +159,9 @@ public class HomePage extends BasePage{
                 logger.info("Skipping product: " + product.getText());
             }
         }
+    }
+
+    public void clickContactButton(){
+        getWebClickCommands().clickElement(contactButton);
     }
 }
