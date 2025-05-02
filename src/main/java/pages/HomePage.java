@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class HomePage extends BasePage{
     private  WebDriverWait homePageWait;
@@ -35,6 +36,15 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//a[text()='About us']")
     private WebElement aboutButton;
+
+    @FindBy(linkText = "MacBook air")
+    private WebElement macBookAirButton;
+
+    @FindBy(className = "card-title")
+    private WebElement productTitles;
+
+    @FindBy(xpath = "//h4[@class='card-title']")
+    private List<WebElement> productNamesList;
 
     private String getRequiredElementXpath(String reqElement){
         return "//a[contains(text(),'"+ reqElement + "')]";
@@ -118,5 +128,33 @@ public class HomePage extends BasePage{
         getWebClickCommands().clickElement(By.xpath(getRequiredElementXpath(product)));
     }
 
+    public boolean verifyingLaptopsButton(){
+        return homePageWait.until(ExpectedConditions.visibilityOf(laptopsButtons)).isDisplayed();
+    }
 
+    public void clickOnLaptopsButton(){
+        getWebWaitCommands().waitFor(3000);
+        getWebClickCommands().clickElement(laptopsButtons);
+    }
+
+//    public void clickingTheMacBook(){
+//        homePageWait.until(ExpectedConditions.visibilityOf(macBookAirButton)).isDisplayed();
+//        getWebWaitCommands().waitFor(2000);
+//        getWebClickCommands().clickElement(macBookAirButton);
+//    }
+
+    public void clickingRequiredProduct(String productName){
+        for (WebElement product : productNamesList){
+            if(product.getText().equalsIgnoreCase(productName)){
+                logger.info("Found product: " + productName);
+                homePageWait.until(ExpectedConditions.visibilityOf(product)).isDisplayed();
+                getWebWaitCommands().waitFor(2000);
+                product.click();
+                logger.info("Clicked on product: " + productName);
+                break;
+            }else {
+                logger.info("Skipping product: " + product.getText());
+            }
+        }
+    }
 }

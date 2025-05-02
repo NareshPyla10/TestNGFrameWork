@@ -61,20 +61,21 @@ public class TestNGListeners implements ITestListener {
     }
 
     public void onTestFailure(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            logger.info("This is a test failure method");
-
-            byte[] screenshot = getWebScreenshotInByteArray();
-            String screenshotPath = screenShotDirectory + File.separator + "Failure_" + getDateTime() + ".png";
-
-            test.fail("Test Failed: " + result.getThrowable());
-
-            try {
-                test.addScreenCaptureFromPath(screenshotPath);
-            } catch (IOException e) {
-                logger.error("Screenshot attach failed: " + e.getMessage());
-            }
-        }
+//        if (result.getStatus() == ITestResult.FAILURE) {
+//            logger.info("This is a test failure method");
+//
+//            byte[] screenshot = getWebScreenshotInByteArray();
+//            String screenshotPath = screenShotDirectory + File.separator + "Failure_" + getDateTime() + ".png";
+//
+//            test.fail("Test Failed: " + result.getThrowable());
+//
+//            try {
+//                test.addScreenCaptureFromPath(screenshotPath);
+//            } catch (IOException e) {
+//                logger.error("Screenshot attach failed: " + e.getMessage());
+//            }
+//        }
+        logger.error("The test is failed");
     }
 
     public void onTestSkipped(ITestResult result) {
